@@ -27,7 +27,14 @@ if [ ! -x "$EXECUTABLE" ]; then
 fi
 
 # List of input matrices
-MATRIX_NAME=(
+MATRIX_NAME=("generator1.mtx"
+"generator2.mtx"
+"generator3.mtx"
+"generator4.mtx"
+"generator5.mtx"
+"generator6.mtx"
+"generator7.mtx"
+"generator8.mtx"
 "generator9.mtx"
 "generator10.mtx"
 )
@@ -46,6 +53,9 @@ for matrix_name in "${MATRIX_NAME[@]}"; do
     mkdir -p "$OUTPUT_DIR$group_name"
 
     # Run the program with the input matrix
+    # 1000000 1000000 -d 0.0002 (1-4)
+    # 1000000 1000000 -d 0.0001 (5-8)
+    # 10000000 10000000 -d 0.000004 (9-10)
     "$EXECUTABLE" 1000000 1000000 -d 0.0001 -s 1 -i 1 -o "/work/$USER/tmp1/$matrix_name"
 
     # Rename the generated output to the desired name and desired folder
